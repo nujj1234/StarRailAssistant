@@ -1,4 +1,5 @@
 import os
+
 import traceback
 import time
 import pyuac
@@ -27,7 +28,7 @@ plugins_path = "plugins"
 plugin_manager = PluginManager("SRA")
 
 class SRA:
-    def __init__(self) -> None:
+    def __init__(self) -> 无:
         plugin_manager.register(self)
         self.option_list = [_('PC'), _('模拟器'), _('更新资源'), _('配置参数')]
         self.option_dict = {
@@ -39,19 +40,19 @@ class SRA:
 
     def run_plugins(self):
         try:
-            return plugin_manager.hook.add_option(SRA=self)
+            return plugin_manager.hook。add_option(SRA=self)
         except:
             return [{}]
 
     def stop(self):
         try:
-            plugin_manager.hook.stop(SRA=self)
+            plugin_manager.hook。stop(SRA=self)
         except:
             return [{}]
 
     def end(self):
         try:
-            plugin_manager.hook.end(SRA=self)
+            plugin_manager.hook。end(SRA=self)
         except:
             return [{}]
 
@@ -61,9 +62,9 @@ class SRA:
 
     def load_plugin(self):
         # 遍历插件文件夹中的文件夹
-        if os.path.exists(plugins_path):
+        if os.path。exists(plugins_path):
             for foldername in os.listdir(plugins_path):
-                folder_path = os.path.join(plugins_path, foldername)
+                folder_path = os.path。join(plugins_path, foldername)
                 plugins_folder = folder_path.replace("\\",".")
                 plugin = importlib.import_module(f"{plugins_folder}")
                 main = plugin = importlib.import_module(f"{plugins_folder}.main")
